@@ -1,0 +1,26 @@
+#include "udf.h"
+DEFINE_PROFILE(pressure_magnitude, t, i)
+{
+real pressure_mag;
+real the_current_time;
+face_t f;
+
+the_current_time = CURRENT_TIME;
+
+if ((the_current_time>=0.0) && (the_current_time<5.))
+{
+pressure_mag=0.0;
+}
+if ((the_current_time>=5.0) && (the_current_time<6.0))
+{
+pressure_mag=8.0e6;
+}
+
+
+
+begin_f_loop(f,t)
+{
+F_PROFILE(f,t,i) = pressure_mag;
+}
+end_f_loop(f,t)
+}

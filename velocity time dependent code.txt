@@ -1,0 +1,29 @@
+#include "udf.h"
+DEFINE_PROFILE(velocity_magnitude, t, i)
+{
+real velocity;
+real the_current_time;
+face_t f;
+
+the_current_time = CURRENT_TIME;
+
+if ((the_current_time>=0) && (the_current_time<5))
+{
+velocity=10;
+}
+if ((the_current_time>=5) && (the_current_time<6))
+{
+velocity=20;
+}
+if ((the_current_time>=6))
+{
+velocity=10;
+}
+
+
+begin_f_loop(f,t)
+{
+F_PROFILE(f,t,i) = velocity;
+}
+end_f_loop(f,t)
+}
